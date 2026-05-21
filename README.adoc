@@ -1,0 +1,42 @@
+= constUP PHP AWS Secrets Manager integration
+:toc:
+:toclevels: 5
+
+image:https://img.shields.io/badge/PHP-8.5-blue[Static Badge]
+image:https://img.shields.io/badge/License-MIT-green[Static Badge]
+image:https://img.shields.io/packagist/dt/constup-foss/php-aws-secrets[Packagist Downloads]
+
+== Description
+
+AWS Secrets Manager integration for PHP.
+
+== Supporting development
+
+If you like this library or find it useful, consider buying me a nice cup of coffee. Coffee fuels open source.
+
+image:doc/bmac.png[width=197]
+
+link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
+
+
+== Installation
+
+[source]
+----
+composer require constup-foss/php-aws-secrets
+----
+
+== License
+
+MIT License
+
+- License file: link:LICENSE.txt[LICENSE.txt]
+- Online version: https://opensource.org/license/mit
+
+== Supporting development
+
+If you like this library or find it useful, consider buying me a nice cup of coffee. Coffee fuels open source.
+
+image:doc/bmac.png[width=197]
+
+link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
