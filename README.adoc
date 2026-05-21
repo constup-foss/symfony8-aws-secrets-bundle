@@ -1,14 +1,14 @@
-= constUP PHP AWS Secrets Manager integration
+= constUP Symfony AWS Secrets Manager Bundle
 :toc:
 :toclevels: 5
 
 image:https://img.shields.io/badge/PHP-8.5-blue[Static Badge]
 image:https://img.shields.io/badge/License-MIT-green[Static Badge]
-image:https://img.shields.io/packagist/dt/constup-foss/php-aws-secrets[Packagist Downloads]
+image:https://img.shields.io/packagist/dt/constup-foss/symfony-aws-secrets-bundle[Packagist Downloads]
 
 == Description
 
-AWS Secrets Manager integration for PHP.
+AWS Secrets Manager bundle for Symfony.
 
 == Supporting development
 
@@ -23,7 +23,7 @@ link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/
 
 [source]
 ----
-composer require constup-foss/php-aws-secrets
+composer require constup-foss/symfony-aws-secrets-bundle
 ----
 
 == License

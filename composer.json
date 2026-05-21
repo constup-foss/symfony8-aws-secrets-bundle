@@ -1,13 +1,13 @@
 {
-  "name": "constup-foss/php-aws-secrets",
-  "description": "PHP (Composer) library for AWS Secrets Manager.",
-  "keywords": ["AWS", "Secrets Manager"],
+  "name": "constup-foss/symfony-aws-secrets-bundle",
+  "description": "Symfony bundle for AWS Secrets Manager integration.",
+  "keywords": ["Symfony", "AWS", "Secrets Manager"],
   "license": "MIT",
-  "homepage": "https://github.com/constup-foss/php-aws-secrets",
+  "homepage": "https://github.com/constup-foss/symfony-aws-secrets-bundle",
   "readme": "README.adoc",
   "autoload": {
     "psr-4": {
-      "ConstupFoss\\PhpAwsSecrets\\": "src"
+      "ConstupFoss\\SymfonyAwsSecretsBundle\\": "src"
     }
   },
   "authors": [
@@ -18,16 +18,17 @@
   ],
   "autoload-dev": {
     "psr-4": {
-      "ConstupFoss\\PhpAwsSecrets\\Tests\\": "tests"
+      "ConstupFoss\\SymfonyAwsSecretsBundle\\Tests\\": "tests"
     }
   },
   "require": {
     "php": "^8.5",
-    "aws/aws-sdk-php": "^3.381"
+    "ext-curl": "*"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.95",
-    "phpunit/phpunit": "^13"
+    "phpunit/phpunit": "^13",
+    "aws/aws-sdk-php": "^3.381"
   },
   "scripts": {
     "csfix": "php vendor/bin/php-cs-fixer fix --verbose --config=.php-cs-fixer.dist.php",
