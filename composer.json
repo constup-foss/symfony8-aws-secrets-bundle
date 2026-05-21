@@ -5,6 +5,7 @@
   "license": "MIT",
   "homepage": "https://github.com/constup-foss/symfony-aws-secrets-bundle",
   "readme": "README.adoc",
+  "type": "symfony-bundle",
   "autoload": {
     "psr-4": {
       "ConstupFoss\\SymfonyAwsSecretsBundle\\": "src"
