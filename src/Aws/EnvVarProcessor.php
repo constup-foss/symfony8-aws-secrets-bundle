@@ -79,7 +79,7 @@ class EnvVarProcessor implements EnvVarProcessorInterface
     public static function getProvidedTypes(): array
     {
         return [
-            'aws' => 'string',
+            'symfony8_aws_secrets' => 'string',
         ];
     }
 }

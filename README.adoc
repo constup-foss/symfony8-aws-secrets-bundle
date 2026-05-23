@@ -125,14 +125,14 @@ after a comma:
 YOUR_AWS_SECRET_VARIABLE="your_secret_name_as_saved_in_secret_manager","your_secrets_json_property"
 ----
 
-Set the value of a Symfony service container parameter to the value of your environment variable with `aws` processor
-applied:
+Set the value of a Symfony service container parameter to the value of your environment variable with
+`symfony8_aws_secrets` processor applied:
 
 .config/services.yaml
 [source,yaml]
 ----
 parameters:
-  your_parameter: "%env(aws:YOUR_AWS_SECRET_VARIABLE)%"
+  your_parameter: "%env(symfony8_aws_secrets:YOUR_AWS_SECRET_VARIABLE)%"
 ----
 
 Your secret will now be loaded at runtime.

@@ -36,8 +36,8 @@ Use secrets as Symfony service container parameters:
 [source,yaml]
 ----
 parameters:
-  your_database_username_parameter: "%env(aws:DATABASE_USERNAME)%"
-  your_database_password_parameter: "%env(aws:DATABASE_PASSWORD)%"
+  your_database_username_parameter: "%env(symfony8_aws_secrets:DATABASE_USERNAME)%"
+  your_database_password_parameter: "%env(symfony8_aws_secrets:DATABASE_PASSWORD)%"
 ----
 
 When you call:
