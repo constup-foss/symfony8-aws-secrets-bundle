@@ -64,7 +64,7 @@ This is to avoid having different bundles providing different versions of the sa
 
 [source]
 ----
-composer require constup-foss/symfony-aws-secrets-bundle
+composer require constup-foss/symfony8-aws-secrets-bundle
 ----
 
 == Configuration
