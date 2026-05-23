@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace ConstupFoss\Symfony8AwsSecretsBundle\Aws;
 
 use Aws\SecretsManager\SecretsManagerClient;
-use Exception;
 
 class AwsSecretsManagerClientFactory
 {
@@ -17,8 +16,6 @@ class AwsSecretsManagerClientFactory
      * @param null|string $token
      * @param null|string $key
      * @param null|string $secret
-     *
-     * @throws Exception
      *
      * @return SecretsManagerClient
      */
@@ -43,7 +40,9 @@ class AwsSecretsManagerClientFactory
         if ($profile !== null && $profile !== '') {
             // use a profile for authentication, for example, IAM Roles Anywhere profile
             $config['profile'] = $profile;
-        } elseif ($key !== null && $key !== '' && $secret !== null && $secret !== '') {
+        }
+
+        if ($key !== null && $key !== '' && $secret !== null && $secret !== '') {
             // Use Access Key and Secret for authentication
             $config['credentials'] = [
                 'key' => $key,
