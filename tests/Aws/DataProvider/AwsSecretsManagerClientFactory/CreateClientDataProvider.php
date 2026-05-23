@@ -1,12 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace ConstupFoss\Symfony8AwsSecretsBundle\Tests\Aws\DataProvider\AwsSecretsManagerClientFactory;
 
 readonly class CreateClientDataProvider
 {
-    public static function provide_HappyFlow(): array {
+    public static function provide_HappyFlow(): array
+    {
         return [
             'Auth using profile.' => [
                 'region' => $region = 'eu-central-1',
@@ -20,7 +21,7 @@ readonly class CreateClientDataProvider
                     'region' => $region,
                     'version' => $version,
                     'profile' => $profile,
-                ]
+                ],
             ],
             'Auth using profile. Endpoint is used.' => [
                 'region' => $region = 'eu-central-1',
@@ -35,7 +36,7 @@ readonly class CreateClientDataProvider
                     'version' => $version,
                     'profile' => $profile,
                     'endpoint' => $endpoint,
-                ]
+                ],
             ],
             'Auth using key and secret.' => [
                 'region' => $region = 'eu-central-1',
@@ -51,8 +52,8 @@ readonly class CreateClientDataProvider
                     'credentials' => [
                         'key' => $key,
                         'secret' => $secret,
-                    ]
-                ]
+                    ],
+                ],
             ],
             'Auth using STS token.' => [
                 'region' => $region = 'eu-central-1',
@@ -70,8 +71,8 @@ readonly class CreateClientDataProvider
                         'secret' => $secret,
                         'token' => $token,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

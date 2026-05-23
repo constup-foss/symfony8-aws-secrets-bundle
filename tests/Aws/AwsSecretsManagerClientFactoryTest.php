@@ -1,10 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace ConstupFoss\Symfony8AwsSecretsBundle\Tests\Aws;
 
-use Aws\SecretsManager\SecretsManagerClient;
 use ConstupFoss\Symfony8AwsSecretsBundle\Aws\AwsSecretsManagerClientFactory;
 use ConstupFoss\Symfony8AwsSecretsBundle\Tests\Aws\DataProvider\AwsSecretsManagerClientFactory\CreateClientDataProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
