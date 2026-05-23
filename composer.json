@@ -1,14 +1,14 @@
 {
-  "name": "constup-foss/symfony-aws-secrets-bundle",
+  "name": "constup-foss/symfony8-aws-secrets-bundle",
   "description": "Symfony bundle for AWS Secrets Manager integration.",
-  "keywords": ["Symfony", "AWS", "Secrets Manager"],
+  "keywords": ["Symfony", "AWS", "Secrets Manager", "Symfony 8"],
   "license": "MIT",
   "homepage": "https://github.com/constup-foss/symfony-aws-secrets-bundle",
   "readme": "README.adoc",
   "type": "symfony-bundle",
   "autoload": {
     "psr-4": {
-      "ConstupFoss\\SymfonyAwsSecretsBundle\\": "src"
+      "ConstupFoss\\Symfony8AwsSecretsBundle\\": "src"
     }
   },
   "authors": [
@@ -19,12 +19,16 @@
   ],
   "autoload-dev": {
     "psr-4": {
-      "ConstupFoss\\SymfonyAwsSecretsBundle\\Tests\\": "tests"
+      "ConstupFoss\\Symfony8AwsSecretsBundle\\Tests\\": "tests"
     }
   },
   "require": {
-    "php": "^8.5",
-    "ext-curl": "*"
+    "php": "^8.4",
+    "ext-curl": "*",
+    "symfony/dependency-injection": "^8.0",
+    "symfony/http-kernel": "^8.0",
+    "symfony/config": "^8.0",
+    "symfony/cache": "^8.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.95",

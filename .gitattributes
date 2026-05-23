@@ -3,13 +3,15 @@
 /.gitattributes export-ignore
 /.dockerignore export-ignore
 /compose.yaml export-ignore
+/composer.lock export-ignore
 /.php-cs-fixer.dist.php export-ignore
 /Dockerfile export-ignore
 /phpunit.xml export-ignore
 /projectinit_cli.sh export-ignore
 /start.sh export-ignore
 /doc/projectinit export-ignore
+/doc/bmac.png export-ignore
 /projectinit_docker export-ignore
-/public export-ignore
+/projectinit_public export-ignore
 /tests export-ignore
 /.github export-ignore

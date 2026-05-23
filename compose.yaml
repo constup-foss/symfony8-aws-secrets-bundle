@@ -1,13 +1,13 @@
 services:
-    symfony_aws_secrets_bundle_app:
-        container_name: symfony_aws_secrets_bundle_app
+    symfony8_aws_secrets_bundle_app:
+        container_name: symfony8_aws_secrets_bundle_app
         build:
             args:
                 PROJECTINIT_UID: ${PROJECTINIT_UID}
                 PROJECTINIT_GID: ${PROJECTINIT_GID}
             context: ./
             dockerfile: Dockerfile
-        image: symfony_aws_secrets_bundle_app
+        image: symfony8_aws_secrets_bundle_app
         restart: "unless-stopped"
         ports:
             - "13080:8080"

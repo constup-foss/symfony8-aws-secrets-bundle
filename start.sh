@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! -f "/usr/src/app/composer.json" ]; then
-  composer init --name "constup-foss/php-aws-secrets" --autoload "src" --no-interaction
+  composer init --name "constup-foss/symfony8-aws-secrets-bundle" --autoload "src" --no-interaction
   temp_composer_file=$(mktemp)
   jq '
   if has("autoload-dev") then .
@@ -20,4 +20,4 @@ composer require --dev --no-cache friendsofphp/php-cs-fixer
 composer require --dev --no-cache phpunit/phpunit:^13
   composer dump-autoload
 fi
-php -S 0.0.0.0:8080 -t /usr/src/app/public /usr/src/app/public/index.php
+php -S 0.0.0.0:8080 -t /usr/src/app/projectinit_public /usr/src/app/projectinit_public/index.php

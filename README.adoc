@@ -4,7 +4,7 @@
 
 image:https://img.shields.io/badge/PHP-8.5-blue[Static Badge]
 image:https://img.shields.io/badge/License-MIT-green[Static Badge]
-image:https://img.shields.io/packagist/dt/constup-foss/symfony-aws-secrets-bundle[Packagist Downloads]
+image:https://img.shields.io/packagist/dt/constup-foss/symfony8-aws-secrets-bundle[Packagist Downloads]
 
 == Description
 
