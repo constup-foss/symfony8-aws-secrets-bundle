@@ -1,0 +1,99 @@
+= Configuration
+:toc:
+:toclevels: 5
+
+== Introduction
+
+By default, configuration for this bundle is loaded from `config/packages/symfony8_aws_secrets.yaml` (or its
+environment-specific location like `config/packages/test/symfony8_aws_secrets.yaml`).
+
+Available configuration properties:
+
+[source,yaml]
+----
+symfony8_aws_secrets:
+  client_config:
+    region:
+    version:
+    endpoint:
+    profile:
+    credentials:
+      key:
+      secret:
+      token:
+  delimiter:
+  ignore:
+----
+
+== Configuration properties
+
+* `client_config` - AWS Secrets Manager Client configuration
+** `region` - `string` - *mandatory* - Your application's AWS region. Example `us-east-1`
+** `version` - `string` - *mandatory* - AWS service API version. Example: `latest`
+** `endpoint` - `string` - _optional_ - Use this field if you are using a custom endpoint to connect to AWS services.
+Fill it with the URL of your AWS services proxy. You can also use it during integration testing to point to your
+link:https://www.localstack.cloud/[LocalStack] instance. Example: `https://your-aws-proxy
+** `profile` - `string` - _selectively optional_ - Name of the AWS CLI profile to use during authentication. If you are
+using long-term Access Keys or AWS STS tokens, you can ommit this field. Example: `default`
+** `credentials` - _selectively optional_ - Configure this field if you are using long-term Access Keys or AWS STS tokens
+for authentication.
+*** `key` - `string` - *_mandatory if `credentials` is present_* - Access Key of your AWS IAM user.
+*** `secret` - `string` - *_mandatory if `credentials` is present_* - Secret Access Key of your AWS IAM user.
+*** `token` - `string` - _selectively optional_ - AWS STS token, if you are using them for authentication.
+* `delimiter` - `string` - _optional_ - Delimiter used when separating the name of your AWS secret from the name of the
+JSON field inside it. Default is comma (`,`) and should work in most cases. Use it if you have an edge case in your
+environment and can't use commas as delimiters in your environment variables.
+* `ignore` - `bool` - _optional_ - Default is `false`. When set to `true`, the bundle will not communicate with AWS.
+Set it to `true` for local development and debugging purposes.
+
+== Examples
+
+=== Profile authentication
+
+.config/packages/symfony8_aws_secrets.yaml
+[source,yaml]
+----
+symfony8_aws_secrets:
+  client_config:
+    region: 'us-east-1'
+    version: 'latest'
+    profile: 'default'
+----
+
+[IMPORTANT]
+====
+Your AWS CLI profile must be configured correctly to authenticate with AWS.
+====
+
+=== Long-term Access Key authentication
+
+.config/packages/symfony8_aws_secrets.yaml
+[source,yaml]
+----
+symfony8_aws_secrets:
+  client_config:
+    region: 'us-east-1'
+    version: 'latest'
+    credentials:
+      key: 'IAM user AccessKeyId'
+      secret: 'IAM user SecretAccessKey'
+----
+
+=== AWS STS token authentication
+
+.config/packages/symfony8_aws_secrets.yaml
+[source,yaml]
+----
+symfony8_aws_secrets:
+  client_config:
+    region: 'us-east-1'
+    version: 'latest'
+    credentials:
+      key: 'IAM user AccessKeyId'
+      secret: 'IAM user SecretAccessKey'
+      token: 'AWS STS temporary token'
+----
+
+== Links
+
+* link:../README.adoc[Home]

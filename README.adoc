@@ -2,22 +2,63 @@
 :toc:
 :toclevels: 5
 
-image:https://img.shields.io/badge/PHP-8.5-blue[Static Badge]
+image:https://img.shields.io/badge/PHP-8.4-blue[Static Badge]
+image:https://img.shields.io/badge/Symfony-8-purple[Static Badge]
 image:https://img.shields.io/badge/License-MIT-green[Static Badge]
 image:https://img.shields.io/packagist/dt/constup-foss/symfony8-aws-secrets-bundle[Packagist Downloads]
 
 == Description
 
-AWS Secrets Manager bundle for Symfony.
+Use AWS Secrets as service container parameter values in Symfony 8.
 
-== Supporting development
+[NOTE]
+====
+*Thank you for more than 200.000 Packagist downloads* of the previous bundle that supported Symfony 5 and
+6 (link:https://github.com/constup-foss/aws-secrets-bundle[AWS Secrets Bundle]). I hope it served you well!
 
-If you like this library or find it useful, consider buying me a nice cup of coffee. Coffee fuels open source.
+If you are using this library, please take a couple of seconds to star it on GitHub. I have abandoned the development of
+the previous version because there was barely any feedback. I thought no one uses it. I've only found out that it was
+widely used after checking it on Packagist after a couple of years.
 
-image:doc/bmac.png[width=197]
+Each star gives me motivation to continue. Thanks!
+====
 
-link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
+== Prerequisites
 
+=== PHP and Symfony versions
+
+This bundle is intended to be used on **Symfony 8** and **PHP 8.4+** (requirement by Symfony 8).
+
+.Note about future support
+[%collapsible]
+====
+New versions of Symfony will have their own bundles. This significantly reduces complexity when managing updates for the
+bundle. This bundle may or may not be compatible with Symfony 9 or any other future version. It is intended to be used
+on Symfony 8 only.
+====
+
+=== Install AWS SDK PHP v3
+
+You need to install AWS SDK for PHP in your project:
+
+[source]
+----
+composer require aws/aws-sdk-php
+----
+
+.Context
+[%collapsible]
+====
+Symfony's best practices for reusable bundles contain the following statement:
+
+[quote]
+----
+A bundle must not embed third-party PHP libraries. It should rely on the standard Symfony autoloading instead.
+----
+
+This is to avoid having different bundles providing different versions of the same SDK.
+
+====
 
 == Installation
 
@@ -25,6 +66,81 @@ link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/
 ----
 composer require constup-foss/symfony-aws-secrets-bundle
 ----
+
+== Configuration
+
+=== Bundle configuration
+
+By default, configuration for this bundle is loaded from `config/packages/symfony8_aws_secrets.yaml` (or its
+environment-specific location like `config/packages/test/symfony8_aws_secrets.yaml`).
+
+Available configuration properties:
+
+[source,yaml]
+----
+symfony8_aws_secrets:
+  client_config:
+    region:
+    version:
+    endpoint:
+    profile:
+    credentials:
+      key:
+      secret:
+      token:
+  delimiter:
+  ignore:
+----
+
+Detailed configuration documentation is available here: link:doc/configuration.adoc[Configuration].
+
+=== AWS authentication
+
+This bundle supports several methods of authentication:
+
+* by loading a `profile` from your `~/.aws` directory
+* by using long-term credentials (`AccessKeyId` and `SecretAccessKey`) from your AWS IAM user
+* by using temporary AWS STS tokens
+
+link:doc/configuration.adoc[Configuration] documentation page describes how to configure this bundle for each method of
+authentication.
+
+link:doc/aws_credentials_and_authentication.adoc[AWS credentials and authentication] documentation page describes
+authenticating in different environments, including how to configure a dockerized AWS CodeBuild pipeline.
+
+== Use
+
+Set an environment variable (for example, in your `.env` file):
+
+[source,dotenv]
+----
+YOUR_AWS_SECRET_VARIABLE="your_secret_name_as_saved_in_secret_manager"
+----
+
+This will usually grab a secret in JSON format. To get the value of a specific key from that JSON response, list it
+after a comma:
+
+[source,dotenv]
+----
+YOUR_AWS_SECRET_VARIABLE="your_secret_name_as_saved_in_secret_manager","your_secrets_json_property"
+----
+
+Set the value of a Symfony service container parameter to the value of your environment variable with `aws` processor
+applied:
+
+.config/services.yaml
+[source,yaml]
+----
+parameters:
+  your_parameter: "%env(aws:YOUR_AWS_SECRET_VARIABLE)%"
+----
+
+Your secret will now be loaded at runtime.
+
+=== More examples
+
+* link:doc/doctrine_mysql_example.adoc[Configure DoctrineORM to use AWS Secret Manager values as MySQL connection
+parameters]
 
 == License
 

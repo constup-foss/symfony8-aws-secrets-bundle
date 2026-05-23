@@ -1,0 +1,75 @@
+= Configure DoctrineORM to use AWS Secret Manager values as MySQL connection parameters
+:toc:
+:toclevels: 5
+
+== Introduction
+
+Let's say that we have an AWS Secret named `mysql_server_credentials` stored in JSON format.
+
+[source,json]
+----
+{
+  "mysql_username": "some_username",
+  "mysql_password": "some_password"
+}
+----
+
+Let's use the contents of this secret as database connection parameters in Symfony 8.
+
+== Step 1: Create environment variables
+
+Create environment variables (for example, in your project's `.env` file) called `DATABASE_USERNAME` and `DATABASE_PASSWORD`.
+The values of these environment variables are made of the name of your AWS Secret, a delimiter and the name of the entry
+within the secret:
+
+[source,dotenv]
+----
+DATABASE_USERNAME="mysql_server_credentials","mysql_username"
+DATABASE_PASSWORD="mysql_server_credentials","mysql_password"
+----
+
+== Step 2: Create container parameters
+
+Use secrets as Symfony service container parameters:
+
+.config/services.yaml
+[source,yaml]
+----
+parameters:
+  your_database_username_parameter: "%env(aws:DATABASE_USERNAME)%"
+  your_database_password_parameter: "%env(aws:DATABASE_PASSWORD)%"
+----
+
+When you call:
+
+[source,php]
+----
+$this->getParameter('your_database_usermane_parameter')
+----
+
+in a controller, this bundle will use AWS SDK to fetch the value from the AWS Secret Manager.
+
+== Step 3: Configure Doctrine
+
+By default, Doctrine stores database connection parameters in the `DATABASE_URL` environment variable (in the `.env`
+file). The exact format may differ between versions and use cases, but it generally looks something like this:
+
+[source,dotenv]
+----
+DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=8.0"
+----
+
+To load database username and password, which we fetched from the AWS Secrets Manager, just use your service container
+parameters:
+
+[source,dotenv]
+----
+DATABASE_URL="mysql://%your_database_username_parameter%:%your_database_password_parameter%@127.0.0.1:3306/db_name?serverVersion=8.0"
+----
+
+If you are using AWS RDS, you can also replace 127.0.0.1 with your RDS endpoint. (Hint: you can also store this value in
+your `mysql_server_credentials` secret and fetch it just like the username and password.)
+
+== Links
+
+* link:../README.adoc[Home]
