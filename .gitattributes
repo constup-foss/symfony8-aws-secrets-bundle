@@ -10,7 +10,6 @@
 /projectinit_cli.sh export-ignore
 /start.sh export-ignore
 /doc/projectinit export-ignore
-/doc/bmac.png export-ignore
 /projectinit_docker export-ignore
 /projectinit_public export-ignore
 /tests export-ignore
