@@ -36,8 +36,6 @@ class AwsSecretsManagerClientFactory
             'version' => $version,
         ];
 
-        var_dump($key, $secret, $token, $profile, $endpoint);
-
         if ($endpoint) {
             $config['endpoint'] = $endpoint;
         }
@@ -57,8 +55,6 @@ class AwsSecretsManagerClientFactory
                 $config['credentials']['token'] = $token;
             }
         }
-
-        var_dump($config);
 
         return new SecretsManagerClient($config);
     }
