@@ -142,6 +142,11 @@ Your secret will now be loaded at runtime.
 * link:doc/doctrine_mysql_example.adoc[Configure DoctrineORM to use AWS Secret Manager values as MySQL connection
 parameters]
 
+== Development, testing and contribution
+
+Development, testing and contribution guide is available on a separate
+link:doc/development_and_maintenance.adoc[documentation page].
+
 == License
 
 MIT License
